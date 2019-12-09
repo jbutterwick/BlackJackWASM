@@ -10,3 +10,11 @@ const imports = {
 Object.defineProperty(module, "exports", {
   get: () => new WebAssembly.Instance(compiled, imports).exports
 });
+// WebAssembly.instantiateStreaming(fetch('/build/optimized.wasm'), {})
+//     .then(wasmModule => {
+//       const exports = wasmModule.instance.exports;
+//       const mem = new Uint32Array(exports.memory.buffer);
+//     });
+
+
+
