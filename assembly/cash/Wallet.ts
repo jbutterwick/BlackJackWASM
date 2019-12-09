@@ -13,15 +13,15 @@ export class Wallet {
         }
     }
 
-    addWinnings(winnings: Winnings) {
+    addWinnings(winnings: Winnings): void {
         this.dollars += winnings.value;
     }
 
-    addBet(bet: Bet) {
+    addBet(bet: Bet): void {
         this.dollars += bet.value;
     }
 
-    subtractLosses(bet: Bet) {
+    subtractLosses(bet: Bet): void {
         this.dollars -= bet.value;
     }
 

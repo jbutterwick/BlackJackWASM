@@ -13,7 +13,7 @@ export class game {
     wallet: Wallet;
 
     constructor() {
-        this.shoe = new Shoe;
+        this.shoe = new Shoe(8);
         this.wallet = new Wallet();
     }
 

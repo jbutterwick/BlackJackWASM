@@ -13,7 +13,7 @@ export class Shoe {
     }
 
 
-    shuffle(numberOfDecks : i32){
+    shuffle(numberOfDecks : i32): void {
         let i = 0;
         do {
             this.addDeck();
@@ -21,7 +21,7 @@ export class Shoe {
         } while (i < numberOfDecks)
     }
 
-    addDeck(){
+    addDeck(): void {
         this._decks.push(new Deck(this._decks.length + 1))
     }
 
