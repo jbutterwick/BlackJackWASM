@@ -1,33 +1,36 @@
 import {Deck} from "./Deck";
 
 export class Shoe {
-    decks: Deck[];
 
-    constructor() {
-        this.decks = [
-            new Deck(0),
-            new Deck(1),
-            new Deck(2),
-            new Deck(3),
-            new Deck(4),
-            new Deck(5),
-            new Deck(6),
-            new Deck(7),
-        ]
+    private _decks: Deck[];
+
+    constructor(numberOfDecks : i32) {
+
+        do {
+            this._decks.push(new Deck(this._decks.length))
+        } while (this._decks.length < numberOfDecks);
+
     }
 
 
-    shuffle(){
+    shuffle(numberOfDecks : i32){
         let i = 0;
         do {
             this.addDeck();
             i++;
-        } while (i < 8)
+        } while (i < numberOfDecks)
     }
 
     addDeck(){
-        this.decks.push(new Deck(this.decks.length + 1))
+        this._decks.push(new Deck(this._decks.length + 1))
     }
 
 
+    get decks(): Deck[] {
+        return this._decks;
+    }
+
+    set decks(value: Deck[]) {
+        this._decks = value;
+    }
 }
