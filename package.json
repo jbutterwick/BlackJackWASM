@@ -2,21 +2,29 @@
   "requires": true,
   "lockfileVersion": 1,
   "dependencies": {
-    "assemblyscript": "^0.8.1",
+    "assemblyscript": {
+      "version": "0.8.1",
+      "resolved": "https://registry.npmjs.org/assemblyscript/-/assemblyscript-0.8.1.tgz",
+      "integrity": "sha512-AEpb4Aq5g77XOxSvWn9ZFjIdfyypGavO5oKOAXUo22tnSpebGHdrx0iyVindGKkDlxWhHUc87B0fvM/w1fnpDg==",
+      "requires": {
+        "binaryen": "89.0.0-nightly.20191113",
+        "long": "^4.0.0"
+      }
+    },
     "binaryen": {
-      "integrity": "sha512-scODswmj6Xf/Adjy1PRsjf8fHxpIIUYpH7HjKUaZ/RdZYjqB1Zq3X4izpLfcK+hKGNah92DpAJ3i/adEayMe9g==",
+      "version": "89.0.0-nightly.20191113",
       "resolved": "https://registry.npmjs.org/binaryen/-/binaryen-89.0.0-nightly.20191113.tgz",
-      "version": "89.0.0-nightly.20191113"
+      "integrity": "sha512-scODswmj6Xf/Adjy1PRsjf8fHxpIIUYpH7HjKUaZ/RdZYjqB1Zq3X4izpLfcK+hKGNah92DpAJ3i/adEayMe9g=="
     },
     "long": {
-      "integrity": "sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==",
+      "version": "4.0.0",
       "resolved": "https://registry.npmjs.org/long/-/long-4.0.0.tgz",
-      "version": "4.0.0"
+      "integrity": "sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA=="
+    },
+    "now": {
+      "version": "16.6.2",
+      "resolved": "https://registry.npmjs.org/now/-/now-16.6.2.tgz",
+      "integrity": "sha512-/kA7Y1CGTU5QKRPLuCTj4UdrzHvn2P901JnbmJdAahlfHDaBj9sS54DvTPWCAxbMda4O+VRBqS9sj0iCXj3ZsA=="
     }
-  },
-  "scripts": {
-    "asbuild:untouched": "asc assembly/index.ts -b build/untouched.wasm -t build/untouched.wat --sourceMap --validate --debug",
-    "asbuild:optimized": "asc assembly/index.ts -b build/optimized.wasm -t build/optimized.wat --sourceMap --validate --optimize",
-    "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized"
   }
 }
