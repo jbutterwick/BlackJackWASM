@@ -1,13 +1,22 @@
 
 
-localGameState = {
-    name: "Wallet",
-    dollars: "1000"
+let localGameState = {
+    gameState: {
+        wallet: {
+            dollars: "1000"
+        },
+    },
+    user: {
+        username: "Jordan",
+        password: "Bailey$7"
+    }
 };
 
-localGameState = window.localStorage.setItem('gameState', JSON.stringify(wallet));
+window.localStorage.setItem('gameState', JSON.stringify(localGameState));
+
+export let previousGameState = window.localStorage.getItem('gameState');
 
 
-window.localStorage.getItem('gameState');
+
 
 

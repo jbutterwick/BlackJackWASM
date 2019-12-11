@@ -1,46 +1,59 @@
-const fs = require("fs");
-const compiled = new WebAssembly.Module(fs.readFileSync(__dirname + "/build/optimized.wasm"));
-require("assemblyscript/std/assembly")
-const imports = {
-    env: {
-        abort(_msg, _file, line, column) {
-            console.error("abort called at index.ts:" + line + ":" + column);
-        }
+// const fs = require("fs");
+// const compiled = new WebAssembly.Module(fs.readFileSync(__dirname + "/build/optimized.wasm"));
+// require("assemblyscript/std/assembly");
+
+export const wasmBrowserInstantiate = async (wasmModuleUrl, importObject) => {
+    let response = undefined;
+
+    if (!importObject) {
+        importObject = {
+            env: {
+                abort: () => console.log("Abort!")
+            }
+        };
     }
+
+    // Check if the browser supports streaming instantiation
+    if (WebAssembly.instantiateStreaming) {
+        // Fetch the module, and instantiate it as it is downloading
+        response = await WebAssembly.instantiateStreaming(
+            fetch(wasmModuleUrl),
+            importObject
+        );
+    }
+
+    return response;
 };
 
-let currentWASModule = Object.defineProperty(module, "exports", {
-    get: () => new WebAssembly.Instance(compiled, imports).exports
-});
+const runWasmAdd = async () => {
+    // Instantiate our wasm module
+    const wasmModule = await wasmBrowserInstantiate("./build/optimized.wasm");
 
-import {GameState} from "./assembly/gameplay/GameState";
+    // Call the Add function export from wasm, save the result
+    const addResult = wasmModule.instance.exports.add(24, 24);
 
-let currentGameState = {};
+    let ptr = wasmModule.__retain(wasmModule.__allocString("Jordan"));
 
-if (GameState) {
-    currentGameState = GameState;
-} else {
-    currentGameState = {
-        imports: {imported_func: arg => console.log(arg)}
-    };
-}
+    const name = wasmModule.__getString(ptr);
 
-WebAssembly.instantiateStreaming(fetch('/build/optimized.wasm'), currentGameState)
-    .then(wasmModule => {
-        const exports = wasmModule.instance.exports;
-        const mem = new Uint32Array(exports.memory.buffer);
+    const greeting = wasmModule.instance.exports.getGreeting(name);
 
-        const name = "James";
-        const greeting = wasmModule.getGreeting(name);
-        const greetingStr = wasmModule.getString(greeting);
+    console.log(addResult);
 
-    });
+};
+runWasmAdd();
 
 
-if (!WebAssembly.instantiateStreaming) {
-    WebAssembly.instantiateStreaming = async (resp, importObject) => {
-        const source = await (await resp).arrayBuffer();
-        return await WebAssembly.instantiate(source, importObject);
-    };
-}
+// import "./GameState/GameState.js";
+
+// let currentGameState = {};
+
+// if () {
+//     currentGameState = GameState;
+// } else {
+//     currentGameState = {
+//         imports: {imported_func: arg => console.log(arg)}
+//     };
+// }
+
 

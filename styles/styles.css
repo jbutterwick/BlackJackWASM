@@ -3,22 +3,40 @@ body {
     padding: 0;
 }
 
-
-
 ul {
     list-style: none;
 }
 
 .gameTable {
     background: green;
+    height: 750px;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .dealer {
     background: aqua;
+    padding: 25px;
+    margin: 25px;
+    width: 55%
 }
 
 .player {
     background: magenta;
+    padding: 25px;
+    margin: 25px;
+    width: 55%
+}
+
+.player h1 {
+    margin-top: 0px;
+}
+
+.dealer h1 {
+    margin-top: 0px;
 }
 
 .hand {
@@ -30,5 +48,5 @@ ul {
 
 .card {
     border: thin solid black;
-    padding: 70px 50px;
+    padding: 35px 25px; /* A standard playing card uses the ratio of 7 : 5 */
 }

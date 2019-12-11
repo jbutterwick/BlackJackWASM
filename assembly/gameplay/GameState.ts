@@ -1,6 +1,5 @@
 import {Settings} from "./Settings";
 
-
 export class GameState{
 
     private _settings : Settings;
