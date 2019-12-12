@@ -21,14 +21,14 @@ ul {
     background: aqua;
     padding: 25px;
     margin: 25px;
-    width: 55%
+    width: 33%
 }
 
 .player {
     background: magenta;
     padding: 25px;
     margin: 25px;
-    width: 55%
+    width: 33%
 }
 
 .player h1 {
@@ -49,4 +49,11 @@ ul {
 .card {
     border: thin solid black;
     padding: 35px 25px; /* A standard playing card uses the ratio of 7 : 5 */
+    background: white;
+
+}
+
+.card h3 {
+    margin: 0;
+    padding: 0;
 }
