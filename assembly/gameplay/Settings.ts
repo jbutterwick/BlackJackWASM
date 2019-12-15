@@ -3,7 +3,7 @@ export class Settings {
 
     //GAME SETTINGS
 
-    private _numberOfDecks: i32;
+    private _numberOfDecks: number;
 
     //PROFILE SETTINGS
 

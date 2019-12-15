@@ -1,6 +1,3 @@
-// const fs = require("fs");
-// const compiled = new WebAssembly.Module(fs.readFileSync(__dirname + "/build/optimized.wasm"));
-// require("assemblyscript/std/assembly");
 
 export const wasmBrowserInstantiate = async (wasmModuleUrl, importObject) => {
     let response = undefined;
@@ -25,23 +22,33 @@ export const wasmBrowserInstantiate = async (wasmModuleUrl, importObject) => {
     return response;
 };
 
-const runWasmAdd = async () => {
+const runBlackJackWASM = async () => {
     // Instantiate our wasm module
     const wasmModule = await wasmBrowserInstantiate("./build/optimized.wasm");
+    const exports = wasmModule.instance.exports;
 
-    // Call the Add function export from wasm, save the result
-    const addResult = wasmModule.instance.exports.add(24, 24);
 
-    let ptr = wasmModule.__retain(wasmModule.__allocString("Jordan"));
+    // const getShoe = wasmModule.instance.exports.getShoe();
+    // const getCard = wasmModule.instance.exports.getCard();
 
-    const name = wasmModule.__getString(ptr);
+    const shoe = exports.getShoe();
 
-    const greeting = wasmModule.instance.exports.getGreeting(name);
+    console.log(exports);
 
-    console.log(addResult);
+    console.log(shoe);
+
 
 };
-runWasmAdd();
+runBlackJackWASM();
+
+
+
+
+
+
+
+
+
 
 
 // import "./GameState/GameState.js";

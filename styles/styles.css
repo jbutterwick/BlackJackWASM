@@ -18,17 +18,19 @@ ul {
 }
 
 .dealer {
-    background: aqua;
+    border: 5px solid aqua;
     padding: 25px;
     margin: 25px;
     width: 33%
+
 }
 
 .player {
-    background: magenta;
+    border: 5px solid magenta;
     padding: 25px;
     margin: 25px;
     width: 33%
+
 }
 
 .player h1 {
@@ -47,7 +49,7 @@ ul {
 }
 
 .card {
-    border: thin solid black;
+    border: 3px solid black;
     padding: 35px 25px; /* A standard playing card uses the ratio of 7 : 5 */
     background: white;
 

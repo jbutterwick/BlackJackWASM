@@ -1,32 +1,33 @@
 export class Card {
 
-    private _suit: i32;
-    private _value: i32;
-    private _used: boolean = false;
-    private _face: string;
-    private _isAce : boolean;
+    private _suit: number;
+    private _value: number;
+    private _used: number = 0;
+    private _isAce : number;
 
-    constructor(suit: i32, value: i32, face: string) {
+    constructor(suit: number, value: number) {
         this._suit = suit;
         this._value = value;
-        this._face = face;
-        this._isAce = value === 11;
-
+        if (value === 11) {
+            this._isAce = 1
+        }else {
+            this._isAce = 0
+        }
     }
 
     get suit(): number {
         return this._suit;
     }
 
-    get used(): boolean {
+    get used(): number { //this is a boolean 1 = TRUE / 0 = FALSE
         return this._used;
     }
 
-    get value(): i32 {
+    get value(): number {
         return this._value;
     }
 
-    set used(value: boolean) {
+    set used(value: number) { //this is a boolean 1 = TRUE / 0 = FALSE
         this._used = value;
     }
 
@@ -34,23 +35,15 @@ export class Card {
         this._suit = value;
     }
 
-    set value(value: i32) {
+    set value(value: number) {
         this._value = value;
     }
 
-    get face(): string {
-        return this._face;
-    }
-
-    set face(value: string) {
-        this._face = value;
-    }
-
-    get isAce(): boolean {
+    get isAce(): number { // this is a boolean 1 = TRUE / 0 = FALSE
         return this._isAce;
     }
 
-    set isAce(value: boolean) {
+    set isAce(value: number) { // this is a boolean 1 = TRUE / 0 = FALSE
         this._isAce = value;
     }
 }

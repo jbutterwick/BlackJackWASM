@@ -2,9 +2,9 @@
 
 export class Winnings{
 
-    private _value:f64;
+    private _value:number;
 
-    constructor(value:f64) {
+    constructor(value:number) {
         this._value = value;
     }
 

@@ -4,7 +4,7 @@ export class Shoe {
 
     private _decks: Deck[];
 
-    constructor(numberOfDecks : i32) {
+    constructor(numberOfDecks : number) {
 
         do {
             this._decks.push(new Deck(this._decks.length))
@@ -13,7 +13,7 @@ export class Shoe {
     }
 
 
-    shuffle(numberOfDecks : i32): void {
+    shuffle(numberOfDecks : number): void {
         let i = 0;
         do {
             this.addDeck();

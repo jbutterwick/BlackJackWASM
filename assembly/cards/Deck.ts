@@ -1,41 +1,38 @@
 import {Card} from './Card';
 
 export class Deck {
-    private _id: i32;
+    private _id: number;
     private _cards: Card[];
 
-    constructor(id: i32) {
+    constructor(id: number) {
         this._id = id;
         this._cards = this.loadDeck()
-
-
     }
-
 
     loadDeck(): Card[] {
 
         let deckInProgress: Card[] = [];
-        let i: i32 = 0;
-        let y: i32;
+        let i: number = 0;
+        let y: number;
 
         do {
             for (y = 0; y < 12; y++) {
-                let stringY : string = y.toString();
-                let value : i32 = y;
+                let stringY : number = y;
+                let value : number = y;
                 if (y === 1) {
-                    stringY = 'a';
+                    stringY = 1;
                     value = 11;
                 }else if (y === 11) {
-                    stringY = 'j';
+                    stringY = 11;
                     value = 10;
                 }else if (y === 12) {
-                    stringY = 'q';
+                    stringY = 12;
                     value = 10;
                 }else if (y === 13) {
-                    stringY = 'k';
+                    stringY = 13;
                     value = 10;
                 }
-                deckInProgress.push(new Card(i,value,stringY));
+                deckInProgress.push(new Card(i,value));
             }
             i++;
         } while (i < 4);

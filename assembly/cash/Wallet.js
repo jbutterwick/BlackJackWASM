@@ -1,35 +1,24 @@
-import {Winnings} from "./Winnings";
-import {Bet} from "./Bet";
-
-
 export class Wallet {
-
-    private _dollars: number = 0;
-
-    constructor(value: number = 0) {
+    constructor(value = 0) {
+        this._dollars = 0;
         this._dollars = 100;
         if (value > 0) {
             this._dollars = value;
         }
     }
-
-    addWinnings(winnings: Winnings): void {
+    addWinnings(winnings) {
         this.dollars += winnings.value;
     }
-
-    addBet(bet: Bet): void {
+    addBet(bet) {
         this.dollars += bet.value;
     }
-
-    subtractLosses(bet: Bet): void {
+    subtractLosses(bet) {
         this.dollars -= bet.value;
     }
-
-    get dollars(): number {
+    get dollars() {
         return this._dollars;
     }
-
-    set dollars(value: number) {
+    set dollars(value) {
         this._dollars = value;
     }
 }

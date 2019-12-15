@@ -2,9 +2,9 @@
 
 export class Bet{
 
-    private _value: f64 = 0;
+    private _value: number = 0;
 
-    constructor(value:f64){
+    constructor(value:number){
         this._value = value;
     }
 
