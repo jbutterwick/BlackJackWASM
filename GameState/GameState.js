@@ -8,7 +8,7 @@ let localGameState = {
     },
     user: {
         username: "Jordan",
-        password: "Bailey$7"
+        password: "dfgsdrtsdfg5r"
     }
 };
 
